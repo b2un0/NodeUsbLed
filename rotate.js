@@ -7,6 +7,7 @@ var pluginNames = [
 	'equalizer',
 	'moving_point',
 	'clock',
+	'weather',
 ];
 
 //init plugins
