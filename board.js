@@ -3,15 +3,20 @@ var HID = require('node-hid');
 //const
 var SIZE_X = 21;
 var SIZE_Y = 7;
+var connectInterval = null;
 
 //connect to message board
 var board;
 function connect() {
 	var controllers = HID.devices(0x1d34, 0x0013);
-	if (!controllers.length) {
-    	throw new Error("USB Message Board could not be found.");
+	if(controllers.length) {
+    	board = new HID.HID(controllers[0].path);
+    	if(connectInterval) {
+			clearInterval(connectInterval);
+			connectInterval = null;
+		}
+		console.log("Connected.");
     }
-    board = new HID.HID(controllers[0].path);
 }
 
 //update board
@@ -56,7 +61,14 @@ setInterval(function() {
 //refresh board
 function refresh() {
 	for(var i = 0; i < packetBytes.length; i++) {
-		board.write(packetBytes[i]);
+		try {
+			board.write(packetBytes[i]);
+		} catch(e) {
+			if(!connectInterval) {
+				console.log("Disconnected.");
+				connectInterval = setInterval(connect, 1000);
+			}
+		}
 	}
 }
 

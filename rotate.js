@@ -6,7 +6,7 @@ board.connect();
 var pluginNames = [
 	'equalizer',
 	'moving_point',
-	'clock'
+	'clock',
 ];
 
 //init plugins
