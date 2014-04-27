@@ -8,6 +8,7 @@ var pluginNames = [
 	'moving_point',
 	'clock',
 	'weather',
+	'bitcoin',
 ];
 
 //init plugins

@@ -41,7 +41,7 @@ function update(screen) {
 		rowBytes.push(bytes);
 	}
 
-	//make bytes to write to device
+	//make bytes that will be written to device
 	packetBytes.length = 0;
 	for(var i = 0; i < SIZE_Y; i += 2) {
 		var row1 = rowBytes[i];
