@@ -1,12 +1,27 @@
-This is a NodeJS driver/framework for the "Dream Cheeky USB Message Board". It contains preinstalled plugins for weather, clock and Bitcoin exchange rate. Custom plugins can be easily written.
+This is a NodeJS driver/framework for the "Dream Cheeky USB Message Board".
+It contains preinstalled plugins for weather, clock and Bitcoin exchange rate. Custom plugins can be easily written.
 
-Install
---------------
+### run examples
+```bash
+git clone https://github.com/b2un0/node-dcled.git
+cd node-dcled
+npm install
+npm install --only=dev
+npm run-script examples
+```
 
-Install NodeJS. After that run:  
-`git clone https://github.com/MorbZ/NodeUsbLed`  
-`cd NodeUsbLed`  
-`npm install node-hid sprintf-js request xml2js ws` 
+### install as dependency in your project
+```bash
+npm install dcled
+```
 
-To run:  
-`node rotate.js`
+#### use in your project
+
+```js
+const dcled = require('dcled');
+let board = new dcled();
+board.connect();
+
+// inspect the examples for more
+
+```
