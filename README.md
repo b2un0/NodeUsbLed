@@ -25,3 +25,31 @@ board.connect();
 // inspect the examples for more
 
 ```
+
+## Docker
+
+There is a Docker Container with mqtt client https://hub.docker.com/r/b2un0/dcled
+
+```yaml
+services:
+    dcled:
+        image: b2un0/dcled:latest
+        restart: always
+        container_name: dcled
+        network_mode: bridge
+        devices:
+            - /dev/bus/usb:/dev/bus/usb
+        environment:
+            MQTT_HOST: "mqtt://192.168.1.2:1883"
+            # MQTT_HOST: "mqtt://USERNAME@PASSWORD:192.168.1.2:1883"
+            MQTT_TOPIC: "home/dcled"
+```
+
+the topic payload must be a json like this:
+
+```json5
+{
+    "text": "word", // must be a string (short)
+    "align": 0 // optional, positive integer padding from left side, negative integer = padding from right side, 0 = default = auto
+}
+```
