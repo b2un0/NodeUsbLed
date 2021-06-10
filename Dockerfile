@@ -15,12 +15,14 @@ WORKDIR /app
 RUN apk add --no-cache --virtual .gyp \
         python \
         make \
-        linux-headers \
+        libc-dev \
+        g++ \
+        hidapi \
         libusb-dev \
         eudev-dev \
-        g++ \
-        && npm install \
-        && npm install mqtt -g \
+        linux-headers \
+        && yarn install \
+        && yarn add mqtt \
         && apk del .gyp \
         && apk add --no-cache eudev libusb
 

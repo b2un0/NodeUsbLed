@@ -1,7 +1,6 @@
 'use strict';
 
 const HID = require('node-hid');
-HID.setDriverType('libusb');
 
 const screen = require('./lib/screen.js');
 

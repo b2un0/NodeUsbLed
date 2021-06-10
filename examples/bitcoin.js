@@ -1,6 +1,6 @@
 'use strict';
 
-const request = require('request');
+const fetch = require('node-fetch');
 
 class Bitcoin {
 
@@ -39,18 +39,14 @@ class Bitcoin {
         this.board.update(this.screen);
     }
 
-    load() {
-        let url = 'https://blockchain.info/ticker';
-        request(url, function (error, response, body) {
-            if (!error && response.statusCode === 200) {
-                let result = JSON.parse(body);
-                if (result.USD) {
-                    this.price = String(Math.round(result.USD.last));
-                } else {
-                    console.error(result);
-                }
-            }
-        }.bind(this));
+    async load() {
+        let response = await fetch('https://blockchain.info/ticker');
+        let body = await response.text();
+        let result = JSON.parse(body);
+
+        this.price = String(Math.round(result.USD.last));
+
+        console.log(body);
     }
 }
 
