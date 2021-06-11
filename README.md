@@ -1,5 +1,13 @@
-This is a NodeJS driver/framework for the "Dream Cheeky USB Message Board".
+# Node.js dcled controller
+
+
+This is a NodeJS driver/framework for the `Dream Cheeky USB Message Board`.
 It contains preinstalled plugins for weather, clock and Bitcoin exchange rate. Custom plugins can be easily written.
+
+![](https://img.shields.io/docker/pulls/b2un0/dcled.svg)
+![](https://img.shields.io/docker/image-size/b2un0/dcled.svg)
+![](https://github.com/b2un0/dcled/workflows/docker/badge.svg)
+
 
 ### run examples
 ```bash

@@ -28,9 +28,6 @@ RUN apk add --no-cache --virtual .gyp \
 
 CMD ["node", "mqtt.js"]
 
-LABEL org.label-schema.name="Docker dcled" \
-      org.label-schema.vcs-ref=${VCS_REF} \
-      org.label-schema.build-date=${BUILD_DATE} \
-      org.label-schema.vcs-url="https://github.com/b2un0/node-dcled" \
-      org.label-schema.schema-version="1.0"
-
+LABEL org.opencontainers.image.created=${BUILD_DATE} \
+      org.opencontainers.image.revision=${VCS_REF} \
+      org.opencontainers.image.source="https://github.com/b2un0/node-dcled"
